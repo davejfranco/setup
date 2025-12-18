@@ -138,7 +138,7 @@ install_opentofu() {
   chmod +x /tmp/install-opentofu.sh
 
   # Execute install script
-  /tmp/install-opentofu.sh
+  /tmp/install-opentofu.sh --install-method standalone
 
   # Remove install script
   rm /tmp/install-opentofu.sh
