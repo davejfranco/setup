@@ -32,6 +32,20 @@ check_sudo() {
   fi
 }
 
+install_prerequisite() {
+  print_info "Installing prerequisites"
+
+  $SUDO apt-get update
+  $SUDO apt-get install -y unzip \
+    gnupg \
+    ca-certificates \
+    curl \
+    lsb-release \
+    python3-pip
+
+  print_info "Pre-requisites installed successfully!"
+}
+
 install_stow() {
   print_info "Installing Stow..."
 
@@ -55,10 +69,6 @@ install_docker() {
     docker --version
     return 0
   fi
-
-  # Install prerequisites
-  $SUDO apt-get update
-  $SUDO apt-get install -y ca-certificates curl gnupg lsb-release
 
   # Add Docker's official GPG key
   $SUDO install -m 0755 -d /etc/apt/keyrings
@@ -97,10 +107,6 @@ install_terraform() {
     terraform --version
     return 0
   fi
-
-  # Install prerequisites
-  $SUDO apt-get update
-  $SUDO apt-get install -y gnupg software-properties-common
 
   # Add HashiCorp GPG key
   wget -O- https://apt.releases.hashicorp.com/gpg |
@@ -157,10 +163,6 @@ install_ansible() {
     return 0
   fi
 
-  # Install prerequisites
-  $SUDO apt-get update
-  $SUDO apt-get install -y python3-pip
-
   # Install Ansible via pip
   $SUDO pip3 install ansible
 
@@ -204,6 +206,10 @@ main() {
     exit 1
   fi
 
+  # Install dependencies
+  echo ""
+
+  install_prerequisite
   # Install each package
   install_stow
   echo ""
