@@ -170,10 +170,17 @@ install_ansible() {
     ansible --version
     return 0
   fi
-
-  # Install Ansible via pip
-  $SUDO pip3 install ansible
-
+  
+  # For debian based systems we use Ubuntu repositories 
+  # https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html
+  UBUNTU_CODENAME=jammy # Latest Ubuntu version
+  wget -O- "https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0x6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367" \
+    | $SUDO gpg --dearmour -o /usr/share/keyrings/ansible-archive-keyring.gpg
+  
+  echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa.launchpad.net/ansible/ansible/ubuntu $UBUNTU_CODENAME main" \
+    | $SUDO tee /etc/apt/sources.list.d/ansible.list
+  $SUDO apt update && $SUDO apt install ansible
+  
   print_info "Ansible installed successfully!"
   ansible --version
 }
