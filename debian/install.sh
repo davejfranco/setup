@@ -46,6 +46,14 @@ install_prerequisite() {
   print_info "Pre-requisites installed successfully!"
 }
 
+install_uv() {
+  print_info "Installing uv..."
+  # Download and install
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+
+  print_info "UV installed successfully!"
+}
+
 install_stow() {
   print_info "Installing Stow..."
 
@@ -191,7 +199,22 @@ install_neovim() {
 # Install aws-cli
 install_awscli() {
   print_info "Installing aws-cli"
+
+  # Download aws cli install files
+  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+  # Decompress install package
+  unzip awscli-bundle.zip
+
+  # Install aws-cli
+  $SUDO ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+  # remove install paclates
+  rm -rf awscli-bundle.zip
+  rm -rf awscli-bundle/
+
+  print_info "aws-cli installed successfully!"
 }
+
 # Main installation function
 main() {
   print_info "Starting Debian package installation..."
@@ -207,10 +230,13 @@ main() {
   fi
 
   # Install dependencies
+  install_prerequisite
   echo ""
 
-  install_prerequisite
   # Install each package
+  install_uv
+  echo ""
+
   install_stow
   echo ""
 
