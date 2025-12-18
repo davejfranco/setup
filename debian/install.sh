@@ -170,17 +170,17 @@ install_ansible() {
     ansible --version
     return 0
   fi
-  
-  # For debian based systems we use Ubuntu repositories 
+
+  # For debian based systems we use Ubuntu repositories
   # https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html
   UBUNTU_CODENAME=jammy # Latest Ubuntu version
-  wget -O- "https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0x6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367" \
-    | $SUDO gpg --dearmour -o /usr/share/keyrings/ansible-archive-keyring.gpg
-  
-  echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa.launchpad.net/ansible/ansible/ubuntu $UBUNTU_CODENAME main" \
-    | $SUDO tee /etc/apt/sources.list.d/ansible.list
-  $SUDO apt update && $SUDO apt install ansible
-  
+  wget -O- "https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0x6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367" |
+    $SUDO gpg --dearmour -o /usr/share/keyrings/ansible-archive-keyring.gpg
+
+  echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa.launchpad.net/ansible/ansible/ubuntu $UBUNTU_CODENAME main" |
+    $SUDO tee /etc/apt/sources.list.d/ansible.list
+  $SUDO apt update && $SUDO apt install -y ansible
+
   print_info "Ansible installed successfully!"
   ansible --version
 }
@@ -207,17 +207,13 @@ install_neovim() {
 install_awscli() {
   print_info "Installing aws-cli"
 
-  # Download aws cli install files
-  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-  # Decompress install package
-  unzip awscli-bundle.zip
+  # Download install package
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
-  # Install aws-cli
-  $SUDO ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-
-  # remove install paclates
-  rm -rf awscli-bundle.zip
-  rm -rf awscli-bundle/
+  # unzip
+  unzip awscliv2.zip
+  # Install
+  $SUDO ./aws/install
 
   print_info "aws-cli installed successfully!"
 }
