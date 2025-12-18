@@ -96,17 +96,9 @@ setup_debian() {
     exit 1
   fi
 
-  print_info "Updating package lists..."
-  sudo apt-get update
-
-  print_info "Installing common packages..."
-  # sudo apt-get install -y git wget curl vim build-essential
-
-  print_info "Upgrading system packages..."
-  # sudo apt-get upgrade -y
-
   print_info "Configuring system..."
   # Add configuration steps
+  ./debian/install.sh
 
   print_info "Debian setup completed successfully!"
 }
