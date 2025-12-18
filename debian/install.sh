@@ -130,22 +130,18 @@ install_opentofu() {
     return 0
   fi
 
-  # Install prerequisites
-  $SUDO apt-get update
-  $SUDO apt-get install -y gnupg software-properties-common
+  # Download opentofu install script
+  curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh \
+    -o /tmp/install-opentofu.sh
 
-  # Add OpenTofu GPG key
-  curl -fsSL https://get.opentofu.org/opentofu.gpg |
-    $SUDO tee /etc/apt/keyrings/opentofu.gpg >/dev/null
+  # Make script executable
+  chmod +x /tmp/install-opentofu.sh
 
-  # Add OpenTofu repository
-  echo "deb [signed-by=/etc/apt/keyrings/opentofu.gpg] \
-        https://packages.opentofu.org/opentofu/tofu/any/ any main" |
-    $SUDO tee /etc/apt/sources.list.d/opentofu.list
+  # Execute install script
+  /tmp/install-opentofu.sh
 
-  # Install OpenTofu
-  $SUDO apt-get update
-  $SUDO apt-get install -y tofu
+  # Remove install script
+  rm /tmp/install-opentofu.sh
 
   print_info "OpenTofu installed successfully!"
   tofu --version
@@ -163,7 +159,7 @@ install_ansible() {
 
   # Install prerequisites
   $SUDO apt-get update
-  $SUDO apt-get install -y software-properties-common python3-pip
+  $SUDO apt-get install -y python3-pip
 
   # Install Ansible via pip
   $SUDO pip3 install ansible
@@ -190,6 +186,10 @@ install_neovim() {
   nvim --version | head -n 1
 }
 
+# Install aws-cli
+install_awscli() {
+  print_info "Installing aws-cli"
+}
 # Main installation function
 main() {
   print_info "Starting Debian package installation..."
@@ -221,6 +221,9 @@ main() {
   echo ""
 
   install_neovim
+  echo ""
+
+  install_awscli
   echo ""
 
   print_info "All packages installed successfully!"
