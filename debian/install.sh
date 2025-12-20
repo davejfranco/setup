@@ -9,7 +9,6 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
 source "$PROJECT_ROOT/util/util.sh"
 
-
 # Main installation function
 main() {
   print_info "Starting Debian package installation..."
@@ -25,7 +24,10 @@ main() {
   fi
 
   # Install dependencies
-  source "$PROJECT_ROOT/pkg/common/ohmyzsh.sh"
+  source "$PROJECT_ROOT/pkg/common/zsh.sh"
+  echo ""
+  
+  source "$PROJECT_ROOT/pkg/common/starship.sh"
   echo ""
   
   source "$PROJECT_ROOT/pkg/debian/pre-requisites.sh"

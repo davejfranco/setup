@@ -6,9 +6,13 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 source "$PROJECT_ROOT/util/util.sh"
 
-print_info "Installing ohmyzsh..."
+print_info "Installing zsh..."
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$SUDO apt-get update
+$SUDO apt-get install -y zsh
 
-print_info "ohmyzsh installed successfully!"
+print_info "setting zsh as default shell for $USER"
+chsh -s zsh
+
+print_info "zsh installed successfully!"
 
