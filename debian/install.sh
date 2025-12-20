@@ -25,6 +25,9 @@ main() {
   fi
 
   # Install dependencies
+  source "$PROJECT_ROOT/pkg/common/ohmyzsh.sh"
+  echo ""
+  
   source "$PROJECT_ROOT/pkg/debian/pre-requisites.sh"
   echo ""
 
