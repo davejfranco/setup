@@ -8,10 +8,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
 source "$PROJECT_ROOT/util/util.sh"
-source "$PROJECT_ROOT/debian/install.sh"
 
 # Configure hostname with sudoers
 source "$PROJECT_ROOT/pkg/common/hostname.sh" "demo"
+# Install packages
+source "$PROJECT_ROOT/debian/install.sh"
 
-# Run Installation script 
-installation "$@"
