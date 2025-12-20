@@ -12,7 +12,7 @@ $SUDO apt-get update
 $SUDO apt-get install -y zsh
 
 print_info "setting zsh as default shell for $USER"
-chsh -s zsh
+$SUDO chsh -s $(which zsh) $USER
 
 print_info "zsh installed successfully!"
 
