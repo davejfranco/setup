@@ -3,7 +3,11 @@
 # Debian package installation script
 # Installs: Docker, Terraform, OpenTofu, Ansible, and Neovim
 
-source ../util/util.sh
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+
+source "$PROJECT_ROOT/util/util.sh"
 
 
 # Main installation function
@@ -21,32 +25,32 @@ main() {
   fi
 
   # Install dependencies
-  source ../pkg/debian/pre-requisites.sh
+  source "$PROJECT_ROOT/pkg/debian/pre-requisites.sh"
   echo ""
 
   # Install each package
-  source ../pkg/common/uv.sh
+  source "$PROJECT_ROOT/pkg/common/uv.sh"
   echo ""
 
-  source ../pkg/debian/stow.sh
+  source "$PROJECT_ROOT/pkg/debian/stow.sh"
   echo ""
 
-  source ../pkg/debian/docker.sh
+  source "$PROJECT_ROOT/pkg/debian/docker.sh"
   echo ""
 
-  source ../pkg/debian/terraform.sh
+  source "$PROJECT_ROOT/pkg/debian/terraform.sh"
   echo ""
 
-  source ../pkg/debian/opentofu.sh
+  source "$PROJECT_ROOT/pkg/debian/opentofu.sh"
   echo ""
 
-  source ../pkg/debian/ansible.sh
+  source "$PROJECT_ROOT/pkg/debian/ansible.sh"
   echo ""
 
-  source ../pkg/common/neovim.sh
+  source "$PROJECT_ROOT/pkg/common/neovim.sh"
   echo ""
 
-  source ../pkg/common/awscli.sh
+  source "$PROJECT_ROOT/pkg/common/awscli.sh"
   echo ""
 
   print_info "All packages installed successfully!"
