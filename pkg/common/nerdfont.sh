@@ -17,7 +17,7 @@ curl -L \
   https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip \
   -o /tmp/JetBrainsMono.zip
 
-unzip /tmp/JetBrainsMono.zip -d /tmp/JetBrainsMono
+unzip -o /tmp/JetBrainsMono.zip -d /tmp/JetBrainsMono
 
 $SUDO mv /tmp/JetBrainsMono/*.ttf /usr/local/share/fonts/NerdFonts/
 $SUDO fc-cache -fv
