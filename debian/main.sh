@@ -10,8 +10,8 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 source "$PROJECT_ROOT/util/util.sh"
 source "$PROJECT_ROOT/debian/install.sh"
 
-print_info "Changing hostname..."
-$SUDO hostnamectl hostname demo
+# Configure hostname with sudoers
+source "$PROJECT_ROOT/pkg/common/hostname.sh" "demo"
 
 # Run Installation script 
 installation "$@"
