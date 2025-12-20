@@ -6,6 +6,8 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 source "$PROJECT_ROOT/util/util.sh"
 
+check_sudo
+
 # Check if hostname parameter is provided
 if [ -z "$1" ]; then
   print_error "Hostname parameter is required"
