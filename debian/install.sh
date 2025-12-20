@@ -27,7 +27,7 @@ main() {
   source "$PROJECT_ROOT/pkg/debian/pre-requisites.sh"
   echo ""
   
-  source "$PROJECT_ROOT/pkg/common/pre-nerdfont.sh"
+  source "$PROJECT_ROOT/pkg/common/nerdfont.sh"
   echo ""
 
   source "$PROJECT_ROOT/pkg/common/zsh.sh"
