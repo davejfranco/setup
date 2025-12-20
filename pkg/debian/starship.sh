@@ -8,7 +8,8 @@ source "$PROJECT_ROOT/util/util.sh"
 
 print_info "Installing starship..."
 
-curl -sS https://starship.rs/install.sh | sh
+$SUDO apt update
+$SUDO apt install -y starship
 
 echo "eval "$(starship init zsh)"" >> ~/.zshrc
 

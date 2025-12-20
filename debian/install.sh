@@ -26,14 +26,14 @@ main() {
   # Install dependencies
   source "$PROJECT_ROOT/pkg/debian/pre-requisites.sh"
   echo ""
-  
+
   source "$PROJECT_ROOT/pkg/common/nerdfont.sh"
   echo ""
 
   source "$PROJECT_ROOT/pkg/common/zsh.sh"
   echo ""
 
-  source "$PROJECT_ROOT/pkg/common/starship.sh"
+  source "$PROJECT_ROOT/pkg/debian/starship.sh"
   echo ""
 
   # Install each package
