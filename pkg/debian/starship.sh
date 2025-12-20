@@ -11,7 +11,7 @@ print_info "Installing starship..."
 $SUDO apt update
 $SUDO apt install -y starship
 
-echo "eval "$(starship init zsh)"" >> ~/.zshrc
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 print_info "starship installed successfully!"
 
