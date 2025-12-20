@@ -10,7 +10,7 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 source "$PROJECT_ROOT/util/util.sh"
 
 # Main installation function
-main() {
+install() {
   print_info "Starting Debian package installation..."
   print_info "Packages to install: Stow, Docker, Terraform, OpenTofu, Ansible, Neovim"
   echo ""
@@ -64,6 +64,3 @@ main() {
   print_info "All packages installed successfully!"
   print_info "You may need to log out and back in for Docker group permissions to take effect."
 }
-
-# Run main function
-main "$@"
