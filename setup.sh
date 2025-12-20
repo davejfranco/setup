@@ -98,7 +98,7 @@ setup_debian() {
 
   print_info "Configuring system..."
   # Add configuration steps
-  ./debian/install.sh
+  ./debian/main.sh
 
   print_info "Debian setup completed successfully!"
 }
