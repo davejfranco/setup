@@ -20,7 +20,7 @@ fi
 
 print_info "Creating user $NEWUSER..."
 
-$SUDO useradd -s /usr/bin/zsh $NEWUSER -G admin,docker,sudo
+$SUDO useradd -m -s /usr/bin/zsh -G admin,docker,sudo $NEWUSER 
 
 print_info "Copying ec2 ssh keys to $NEWUSER..."
 $SUDO mkdir /home/"$NEWUSER"/.ssh

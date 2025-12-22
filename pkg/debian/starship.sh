@@ -17,8 +17,14 @@ fi
 $SUDO apt update
 $SUDO apt install -y starship
 
+# Create .zshrc if it doesn't exist
+if [[ ! -f /home/"$USER"/.zshrc ]]; then
+  $SUDO touch /home/"$USER"/.zshrc
+  $SUDO chown "$USER":"$USER" /home/"$USER"/.zshrc
+fi
+
 if ! grep -q 'starship init zsh' /home/"$USER"/.zshrc 2>/dev/null; then
-  $SUDO echo 'eval "$(starship init zsh)"' >> /home/"$USER"/.zshrc
+  $SUDO bash -c "echo 'eval \"\$(starship init zsh)\"' >> /home/\"$USER\"/.zshrc"
 fi
 
 $SUDO mkdir -p /home/"$USER"/.config
