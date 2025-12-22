@@ -14,16 +14,11 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-if command -v starship &>/dev/null; then
-  print_warning "Starship is already installed"
-  return 0
-fi
-
 $SUDO apt update
 $SUDO apt install -y starship
 
 if ! grep -q 'starship init zsh' /home/"$USER"/.zshrc 2>/dev/null; then
-  echo 'eval "$(starship init zsh)"' >> /home/"$USER"/.zshrc
+  $SUDO echo 'eval "$(starship init zsh)"' >> /home/"$USER"/.zshrc
 fi
 
 $SUDO mkdir -p /home/"$USER"/.config
