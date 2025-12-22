@@ -21,7 +21,7 @@ fi
 print_info "Creating user $NEWUSER..."
 
 $SUDO useradd -m -s /usr/bin/zsh -G admin,docker,sudo $NEWUSER 
-$SUDO bash -c "cat > /etc/sudoers.d/91-$NEWUSER" <<'EOF'
+$SUDO bash -c "cat > /etc/sudoers.d/91-$NEWUSER" <<EOF
 $NEWUSER ALL=(ALL) NOPASSWD:ALL
 EOF
 
