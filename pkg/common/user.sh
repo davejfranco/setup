@@ -23,5 +23,6 @@ print_info "Creating user $NEWUSER..."
 $SUDO useradd -s /usr/bin/zsh $NEWUSER -G admin,docker,sudo
 
 print_info "Copying ec2 ssh keys to $NEWUSER..."
-$SUDO cp -r ~/.ssh /home/"$NEWUSER"/
+$SUDO mkdir /home/"$NEWUSER"/.ssh
+$SUDO cp ~/.ssh/authorized_keys /home/"$NEWUSER"/.ssh/authorized_keys
 $SUDO chown -R "$NEWUSER":"$NEWUSER" /home/"$NEWUSER"/.ssh
