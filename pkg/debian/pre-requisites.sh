@@ -14,6 +14,7 @@ $SUDO apt-get install -y unzip \
   ca-certificates \
   curl \
   lsb-release \
-  python3-pip
+  python3-pip \
+  htop
 
 print_info "Pre-requisites installed successfully!"
