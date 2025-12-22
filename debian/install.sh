@@ -56,6 +56,8 @@ echo ""
 source "$PROJECT_ROOT/pkg/common/awscli.sh"
 echo ""
 
+source "$PROJECT_ROOT/pkg/common/kubectl.sh"
+echo ""
 # Configure aesthetics
 source "$PROJECT_ROOT/pkg/common/user.sh" daveops
 echo ""
