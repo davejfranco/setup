@@ -14,6 +14,11 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
+if command -v starship &>/dev/null; then
+  print_warning "Starship is already installed"
+  return 0
+fi
+
 $SUDO apt update
 $SUDO apt install -y starship
 
