@@ -29,9 +29,9 @@ fi
 
 $SUDO mkdir -p /home/"$USER"/.config
 
-$SUDO cat <<EOF > /home/"$USER"/.config/starship.toml
+$SUDO bash -c "cat > /home/\"$USER\"/.config/starship.toml" <<'EOF'
 # Get editor completions based on the config schema
-"\$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = 'https://starship.rs/config-schema.json'
 
 # Inserts a blank line between shell prompts
 add_newline = true
