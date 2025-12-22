@@ -22,9 +22,8 @@ if ! grep -q 'starship init zsh' /home/"$USER"/.zshrc 2>/dev/null; then
 fi
 
 $SUDO mkdir -p /home/"$USER"/.config
-$SUDO chown -R "$USER":"$USER" /home/"$USER"/.config
 
-cat <<EOF > /home/"$USER"/.config/starship.toml
+$SUDO cat <<EOF > /home/"$USER"/.config/starship.toml
 # Get editor completions based on the config schema
 "\$schema" = 'https://starship.rs/config-schema.json'
 
@@ -40,5 +39,6 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 disabled = true
 EOF
 
+$SUDO chown -R "$USER":"$USER" /home/"$USER"/.config
 print_info "starship installed successfully!"
 
