@@ -8,7 +8,7 @@ source "$PROJECT_ROOT/util/util.sh"
 
 print_info "Installing uv..."
 
-if command -v suv &>/dev/null; then
+if command -v uv &>/dev/null; then
   print_warning "uv is already installed"
   return 0
 fi

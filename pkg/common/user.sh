@@ -21,6 +21,9 @@ fi
 print_info "Creating user $NEWUSER..."
 
 $SUDO useradd -m -s /usr/bin/zsh -G admin,docker,sudo $NEWUSER 
+$SUDO bash -c "cat > /etc/sudoers.d/91-$NEWUSER" <<'EOF'
+$NEWUSER ALL=(ALL) NOPASSWD:ALL
+EOF
 
 print_info "Copying ec2 ssh keys to $NEWUSER..."
 $SUDO mkdir /home/"$NEWUSER"/.ssh
