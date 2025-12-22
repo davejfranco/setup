@@ -11,8 +11,8 @@ print_info "Installing zsh..."
 $SUDO apt-get update
 $SUDO apt-get install -y zsh
 
-print_info "setting zsh as default shell for $USER"
-$SUDO usermod -s $(which zsh) $USER
+#print_info "setting zsh as default shell for $USER"
+#$SUDO usermod -s $(which zsh) $USER
 
 print_info "zsh installed successfully!"
 

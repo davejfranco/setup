@@ -31,17 +31,14 @@ echo ""
 source "$PROJECT_ROOT/pkg/common/zsh.sh"
 echo ""
 
-source "$PROJECT_ROOT/pkg/debian/starship.sh"
+# Install each package
+source "$PROJECT_ROOT/pkg/debian/docker.sh"
 echo ""
 
-# Install each package
 source "$PROJECT_ROOT/pkg/common/uv.sh"
 echo ""
 
 source "$PROJECT_ROOT/pkg/debian/stow.sh"
-echo ""
-
-source "$PROJECT_ROOT/pkg/debian/docker.sh"
 echo ""
 
 source "$PROJECT_ROOT/pkg/debian/terraform.sh"
@@ -57,6 +54,13 @@ source "$PROJECT_ROOT/pkg/common/neovim.sh"
 echo ""
 
 source "$PROJECT_ROOT/pkg/common/awscli.sh"
+echo ""
+
+# Configure aesthetics
+source "$PROJECT_ROOT/pkg/common/user.sh" daveops
+echo ""
+
+source "$PROJECT_ROOT/pkg/debian/starship.sh" daveops
 echo ""
 
 print_info "All packages installed successfully!"

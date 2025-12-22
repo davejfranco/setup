@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+source "$PROJECT_ROOT/util/util.sh"
+
+NEWUSER=$1
+
+if [[ -z "$1" ]]; then
+  print_error "No username provided"
+  return
+fi
+
+if id "$NEWUSER" >/dev/null 2>&1; then
+  print_info "User $NEWUSER already exists..."
+  return
+fi
+
+print_info "Creating user $NEWUSER..."
+
+$SUDO useradd -s /usr/bin/zsh $NEWUSER -G admin,docker,sudo
+
+print_info "Copying ec2 ssh keys to $NEWUSER..."
+$SUDO cp -r ~/.ssh /home/"$NEWUSER"/
+$SUDO chown -R "$NEWUSER":"$NEWUSER" /home/"$NEWUSER"/.ssh
