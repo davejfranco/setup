@@ -14,6 +14,7 @@ if command -v tofu &>/dev/null; then
   return 0
 fi
 
+# OpenTofu provides a standalone installer that works on both Debian and Arch
 # Download opentofu install script
 curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh \
   -o /tmp/install-opentofu.sh

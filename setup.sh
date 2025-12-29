@@ -48,16 +48,17 @@ EOF
 setup_omarchy() {
   print_info "Starting omarchy setup..."
 
-  # Add your omarchy setup commands here
-  print_info "Installing omarchy dependencies..."
-  # Example commands:
-  # sudo apt-get update
-  # sudo apt-get install -y required-packages
+  # Check if running on Arch-based system
+  if ! command -v pacman &>/dev/null; then
+    print_error "This system does not appear to be Arch-based"
+    exit 1
+  fi
 
-  print_info "Configuring omarchy..."
-  # Add configuration steps
-
-  print_info "omarchy setup completed successfully!"
+  # Get the directory where this script is located
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  
+  # Run omarchy main script
+  "$SCRIPT_DIR/omarchy/main.sh"
 }
 
 # Setup macOS function

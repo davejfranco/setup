@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Debian package installation script
+# Omarchy (Arch) package installation script
 # Uses the new package-list based installation system
 
 # Get the directory where this script is located
@@ -9,31 +9,23 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
 source "$PROJECT_ROOT/util/util.sh"
 
-print_info "Starting Debian system setup..."
+print_info "Starting Omarchy system setup..."
 
 check_sudo
 
-# Check if running on Debian-based system
-if ! command -v apt-get &>/dev/null; then
-  print_error "This system does not appear to be Debian-based"
+# Check if running on Arch-based system
+if ! command -v pacman &>/dev/null; then
+  print_error "This system does not appear to be Arch-based"
   exit 1
 fi
 
-# Configure hostname with sudoers (optional - uncomment if needed)
-# source "$PROJECT_ROOT/pkg/common/hostname.sh" "demo"
-
 # Install packages from package list
-print_info "Installing packages from debian-base.packages..."
-source "$PROJECT_ROOT/pkg/install-apt.sh" "$PROJECT_ROOT/install/debian-base.packages"
-
-# Post-installation configuration
-echo ""
-print_info "Running post-installation configuration..."
-source "$PROJECT_ROOT/pkg/common/user.sh" daveops
+print_info "Installing packages from omarchy-base.packages..."
+source "$PROJECT_ROOT/pkg/install-pacman.sh" "$PROJECT_ROOT/install/omarchy-base.packages"
 
 echo ""
 print_info "═══════════════════════════════════════════════════════════"
-print_info "Debian setup completed successfully!"
+print_info "Omarchy setup completed successfully!"
 print_info "═══════════════════════════════════════════════════════════"
 print_info "You may need to log out and back in for some changes to take effect."
 print_info "(Especially for Docker group permissions and shell changes)"

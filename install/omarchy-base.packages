@@ -1,0 +1,33 @@
+# Omarchy (Arch) core packages installed via pacman
+# This file is used by pkg/install-pacman.sh
+
+# System utilities
+curl
+wget
+git
+unzip
+unrar
+htop
+
+# Shell and tools
+stow
+omarchy-zsh
+
+# Applications
+vlc
+vlc-plugins-all
+k9s
+brave-bin
+
+# Custom installations (require handlers)
+# These packages need special installation logic and have handlers in install/custom/
+CUSTOM:nerdfont
+CUSTOM:neovim
+CUSTOM:kubectl
+CUSTOM:kubectx
+CUSTOM:awscli
+CUSTOM:terraform
+CUSTOM:opentofu
+CUSTOM:ansible
+CUSTOM:starship
+CUSTOM:uv

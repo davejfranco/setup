@@ -1,0 +1,31 @@
+# Debian core packages installed via apt
+# This file is used by pkg/install-apt.sh
+
+# System utilities (from pre-requisites.sh)
+unzip
+gnupg
+ca-certificates
+curl
+lsb-release
+python3-pip
+htop
+
+# Shell and tools
+zsh
+stow
+bat
+
+# Custom installations (require handlers)
+# These packages need special installation logic and have handlers in install/custom/
+CUSTOM:nerdfont
+CUSTOM:docker
+CUSTOM:uv
+CUSTOM:terraform
+CUSTOM:opentofu
+CUSTOM:ansible
+CUSTOM:neovim
+CUSTOM:awscli
+CUSTOM:kubectl
+CUSTOM:k9s
+CUSTOM:kubectx
+CUSTOM:starship
