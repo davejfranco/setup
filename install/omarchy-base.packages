@@ -14,20 +14,17 @@ stow
 omarchy-zsh
 
 # Applications
+tmux
 vlc
 vlc-plugins-all
 k9s
-brave-bin
 
 # Custom installations (require handlers)
 # These packages need special installation logic and have handlers in install/custom/
-CUSTOM:nerdfont
-CUSTOM:neovim
 CUSTOM:kubectl
 CUSTOM:kubectx
 CUSTOM:awscli
 CUSTOM:terraform
 CUSTOM:opentofu
 CUSTOM:ansible
-CUSTOM:starship
 CUSTOM:uv
