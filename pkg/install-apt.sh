@@ -13,8 +13,8 @@ source "$PROJECT_ROOT/util/util.sh"
 PACKAGE_FILE="$1"
 
 if [ ! -f "$PACKAGE_FILE" ]; then
-    print_error "Package file not found: $PACKAGE_FILE"
-    exit 1
+  print_error "Package file not found: $PACKAGE_FILE"
+  exit 1
 fi
 
 print_info "Reading package list from: $PACKAGE_FILE"
@@ -27,30 +27,30 @@ mapfile -t custom < <(grep '^CUSTOM:' "$PACKAGE_FILE" | sed 's/^CUSTOM://')
 
 # Install standard packages via apt
 if [ ${#packages[@]} -gt 0 ]; then
-    print_info "Installing ${#packages[@]} standard packages via apt..."
-    echo ""
-    
-    $SUDO apt-get update
-    $SUDO apt-get install -y "${packages[@]}"
-    
-    echo ""
-    print_info "Standard packages installed successfully!"
+  print_info "Installing ${#packages[@]} standard packages via apt..."
+  echo ""
+
+  $SUDO apt-get update
+  $SUDO apt-get install -y "${packages[@]}"
+
+  echo ""
+  print_info "Standard packages installed successfully!"
 fi
 
 # Install custom packages
 if [ ${#custom[@]} -gt 0 ]; then
-    print_info "Installing ${#custom[@]} custom packages..."
-    echo ""
-    
-    for pkg in "${custom[@]}"; do
-        if [ -f "$PROJECT_ROOT/install/custom/$pkg.sh" ]; then
-            print_info "Installing custom package: $pkg"
-            source "$PROJECT_ROOT/install/custom/$pkg.sh"
-            echo ""
-        else
-            print_warning "Custom handler not found: $pkg.sh (skipping)"
-        fi
-    done
-    
-    print_info "Custom packages installation completed!"
+  print_info "Installing ${#custom[@]} custom packages..."
+  echo ""
+
+  for pkg in "${custom[@]}"; do
+    if [ -f "$PROJECT_ROOT/install/custom/$pkg.sh" ]; then
+      print_info "Installing custom package: $pkg"
+      source "$PROJECT_ROOT/install/custom/$pkg.sh"
+      echo ""
+    else
+      print_warning "Custom handler not found: $pkg.sh (skipping)"
+    fi
+  done
+
+  print_info "Custom packages installation completed!"
 fi
