@@ -9,6 +9,7 @@ unzip
 unrar
 htop
 sshpass
+python-pipx
 
 # Shell and tools
 stow
