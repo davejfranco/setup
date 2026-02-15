@@ -20,6 +20,8 @@ tmux
 vlc
 vlc-plugins-all
 k9s
+dnsmasq
+mkcert
 
 # Custom installations (require handlers)
 # These packages need special installation logic and have handlers in install/custom/
